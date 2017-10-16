@@ -15,6 +15,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
 
+import application.example.com.foodhouse.Model.User;
+
 public class SignUpActivity extends AppCompatActivity {
     private EditText etPassword, etName, etNumber;
     private Button signUp;

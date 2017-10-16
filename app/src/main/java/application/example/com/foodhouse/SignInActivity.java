@@ -1,6 +1,7 @@
 package application.example.com.foodhouse;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -14,6 +15,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.rengwuxian.materialedittext.MaterialEditText;
+
+import application.example.com.foodhouse.Common.Common;
+import application.example.com.foodhouse.Model.User;
 
 public class SignInActivity extends AppCompatActivity {
     private EditText password, number;
@@ -42,8 +46,13 @@ public class SignInActivity extends AppCompatActivity {
                             User user = dataSnapshot.child(number.getText().toString()).getValue(User.class);
                             if (user.getPassword().equals(password.getText().toString())) {
                                 Toast.makeText(SignInActivity.this, "Sign In Successfully !", Toast.LENGTH_SHORT).show();
+                                Intent homeIntent=new Intent(SignInActivity.this,Home.class);
+                                Common.currentUser=user;
+                                startActivity(homeIntent);
+                                finish();
+
                             } else {
-                                Toast.makeText(SignInActivity.this, "Sign In Failed !", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(SignInActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();
                             }
                         }else {
                             mDialog.dismiss();

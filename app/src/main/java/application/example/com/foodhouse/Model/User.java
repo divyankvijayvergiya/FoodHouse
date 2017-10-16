@@ -1,4 +1,4 @@
-package application.example.com.foodhouse;
+package application.example.com.foodhouse.Model;
 
 /**
  * Created by Dell on 15-10-2017.
